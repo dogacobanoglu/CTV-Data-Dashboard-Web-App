@@ -1,0 +1,81 @@
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+<h2>Patent Table</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>docketKey1</th>
+    <th>docketKeys</th>
+    <th>app</th>
+    <th>CC</th>
+    <th>country</th>
+    <th>appType</th>
+    <th>title</th>
+    <th>pubNum</th>
+    <th>patNum</th>
+    <th>file</th>
+    <th>priority</th>
+    <th>issue</th>
+    <th>expiration</th>
+    <th>abandon</th>
+    <th>abandonVF</th>
+    <th>origStatus</th>
+    <th>status</th>
+    <th>docket</th>
+    <th>OLC</th>
+    <th>IR1</th>
+    <th>IRs</th>
+    <th>PI</th>
+    <th>dept</th>
+    <th>div</th>
+    <th>patNumber</th>
+    <th>deadDate</th>
+    <th>staus</th>
+    <th>alive</th>
+    <th>fileFY</th>
+    <th>issueFY</th>
+  </tr>
+  {% for patent in patents %}
+		<tr>
+			<td>{{ patent.docketKey1 }}</td>
+            <td>{{ patent.docketKeys }}</td>
+            <td>{{ patent.app }}</td>
+            <td>{{ patent.CC }}</td>
+            <td>{{ patent.country }}</td>
+            <td>{{ patent.appType }}</td>
+            <td>{{ patent.title }}</td>
+            <td>{{ patent.pubNum }}</td>
+            <td>{{ patent.patNum }}</td>
+            <td>{{ patent.file }}</td>
+            <td>{{ patent.priority }}</td>
+            <td>{{ patent.issue }}</td>
+            <td>{{ patent.expiration }}</td>
+            <td>{{ patent.abandon }}</td>
+            <td>{{ patent.abandonVF }}</td>
+            <td>{{ patent.origStatus }}</td>
+            <td>{{ patent.status }}</td>
+            <td>{{ patent.docket }}</td>
+            <td>{{ patent.OLC }}</td>
+            <td>{{ patent.IR1 }}</td>
+            <td>{{ patent.IRs }}</td>
+            <td>{{ patent.PI }}</td>
+            <td>{{ patent.dept }}</td>
+            <td>{{ patent.div }}</td>
+            <td>{{ patent.patNumber }}</td>
+            <td>{{ patent.deadDate }}</td>
+            <td>{{ patent.staus }}</td>
+            <td>{{ patent.alive }}</td>
+            <td>{{ patent.fileFY }}</td>
+            <td>{{ patent.issueFY }}</td>
+		</tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>

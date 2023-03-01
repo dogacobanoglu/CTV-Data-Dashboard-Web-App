@@ -1,0 +1,69 @@
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+
+<h2>IR Table</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>irKey</th>
+    <th>irNum</th>
+    <th>extNum</th>
+    <th>title</th>
+    <th>PIs</th>
+    <th>inventors</th>
+    <th>TLO</th>
+    <th>PLG</th>
+    <th>submitted</th>
+    <th>FY</th>
+    <th>missing</th>
+    <th>Review_Decision</th>
+    <th>Disclosure_Status</th>
+    <th>Technology_Status</th>
+    <th>alert</th>
+    <th>URL</th>
+    <th>leadIRonWeb</th>
+    <th>assessmentReceived</th>
+    <th>disclosableTitle</th>
+    <th>fedFunding</th>
+    <th>fedGrants</th>
+    <th>relIRs</th>
+    <th>stat</th>
+    <th>ExNonexOpt_321</th>
+  </tr>
+  {% for ir in irs %}
+		<tr>
+			<td>{{ ir.irKey }}</td>
+            <td>{{ ir.irNum }}</td>
+            <td>{{ ir.extNum }}</td>
+            <td>{{ ir.title }}</td>
+            <td>{{ ir.PIs }}</td>
+            <td>{{ ir.inventors }}</td>
+            <td>{{ ir.TLO }}</td>
+            <td>{{ ir.PLG }}</td>
+            <td>{{ ir.submitted }}</td>
+            <td>{{ ir.FY }}</td>
+            <td>{{ ir.missing }}</td>
+            <td>{{ ir.Review_Decision }}</td>
+            <td>{{ ir.Disclosure_Status }}</td>
+            <td>{{ ir.Technology_Status }}</td>
+            <td>{{ ir.alert }}</td>
+            <td>{{ ir.URL }}</td>
+            <td>{{ ir.leadIRonWeb }}</td>
+            <td>{{ ir.assessmentReceived}}</td>
+            <td>{{ ir.disclosableTitle }}</td>
+            <td>{{ ir.fedFunding }}</td>
+            <td>{{ ir.fedGrants }}</td>
+            <td>{{ ir.relIRs }}</td>
+            <td>{{ ir.stat }}</td>
+            <td>{{ ir.ExNonexOpt_321 }}</td>
+		</tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
