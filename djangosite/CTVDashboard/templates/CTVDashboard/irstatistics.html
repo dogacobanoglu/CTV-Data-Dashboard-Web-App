@@ -1,0 +1,115 @@
+<html>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+<h2>IRs (to-date FY)</h2>
+
+<table style="width:100%">
+	<tr>
+		<th>TLO</th>
+		<th>2008</th>
+		<th>2009</th>
+		<th>2010</th>
+		<th>2011</th>
+		<th>2012</th>
+		<th>2013</th>
+		<th>2014</th>
+		<th>2015</th>
+		<th>2016</th>
+		<th>2017</th>
+		<th>2018</th>
+		<th>2019</th>
+		<th>2020</th>
+		<th>2021</th>
+		<th>2022</th>
+		<th>2023</th>
+	</tr>
+	{% for row in listPeople %}
+	<tr>
+		<td>{{ row }}</td>
+		{% if "2008" in row %}
+		<td>{{row.get("2008",0)}</td>
+		{% endif %}
+		{% if 2009 in row %}
+		<td>{{row.2009}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2010 in row %}
+		<td>{{row.2010}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2011 in row %}
+		<td>{{row.2011}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2012 in row %}
+		<td>{{row.2012}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2013 in row %}
+		<td>{{row.2014}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2014 in row %}
+		<td>{{row.2014}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2015 in row %}
+		<td>{{row.2015}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2016 in row %}
+		<td>{{row.2016}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2017 in row %}
+		<td>{{row.2017}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2018 in row %}
+		<td>{{row.2018}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2019 in row %}
+		<td>{{row.2019}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2020 in row %}
+		<td>{{row.2020}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2021 in row %}
+		<td>{{row.2021}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2022 in row %}
+		<td>{{row.2022}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+		{% if 2023 in row %}
+		<td>{{row.2023}}</td>
+		{% else %}
+		<td>0</td>
+		{% endif %}
+	</tr>
+	{% endfor %}
+	</table>
+</body>
+</html>

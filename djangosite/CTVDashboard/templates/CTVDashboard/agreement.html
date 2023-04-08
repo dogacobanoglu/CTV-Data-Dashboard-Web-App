@@ -1,0 +1,133 @@
+<html>
+<head>
+    <style>
+    table, th, td {
+      border:1px solid black;
+    }
+    </style>
+    <style>
+          body {
+            background-color: #9BDDFF; /* replace with the color of your choice */
+          }
+    </style>
+    <style>
+          #searchInput {
+            background-color: white; /* replace with the color of your choice */
+            border: none; /* replace with the color of your choice */
+            border-radius: 10px; /* replace with the desired border radius */
+            padding: 5px; /* replace with the desired padding */
+            width: 200px; /* replace with the desired width */
+          }
+    </style>
+</head>
+<body>
+
+<h2>Agreement Table</h2>
+
+<input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
+<br><br>
+
+<table id="dataTable" style="width:100%">
+  <tr>
+    <th>agtKey</th>
+    <th>agtNum</th>
+    <th>alert</th>
+    <th>comment</th>
+    <th>company</th>
+    <th>conCMG</th>
+    <th>conCompany</th>
+    <th>conDept</th>
+    <th>conDiv</th>
+    <th>conPI</th>
+    <th>conTLO</th>
+    <th>country</th>
+    <th>cuSUfy</th>
+    <th>effective</th>
+    <th>entityType</th>
+    <th>execution</th>
+    <th>expiration</th>
+    <th>exportChecked</th>
+    <th>irDept</th>
+    <th>irDiv</th>
+    <th>irInventor</th>
+    <th>IRs</th>
+    <th>leadSource</th>
+    <th>metacat</th>
+    <th>relAgtNum</th>
+    <th>royalty</th>
+    <th>status</th>
+    <th>termination</th>
+    <th>title</th>
+    <th>TLO</th>
+    <th>totalValue</th>
+    <th>type</th>
+    <th>agtFY</th>
+    <th>equity</th>
+    <th>VAL</th>
+  </tr>
+  {% for agreement in agreements %}
+		<tr>
+            <td>{{ agreement.agtKey }}</td>
+            <td>{{ agreement.agtNum }}</td>
+            <td>{{ agreement.alert }}</td>
+            <td>{{ agreement.comment }}</td>
+            <td>{{ agreement.company }}</td>
+            <td>{{ agreement.conCMG }}</td>
+            <td>{{ agreement.conCompany }}</td>
+            <td>{{ agreement.conDept }}</td>
+            <td>{{ agreement.conDiv }}</td>
+            <td>{{ agreement.conPI }}</td>
+            <td>{{ agreement.conTLO}}</td>
+            <td>{{ agreement.country}}</td>
+            <td>{{ agreement.cuSUfy}}</td>
+            <td>{{ agreement.effective}}</td>
+            <td>{{ agreement.execution }}</td>
+            <td>{{ agreement.expiration}}</td>
+            <td>{{ agreement.exportChecked}}</td>
+            <td>{{ agreement.irDept}}</td>
+            <td>{{ agreement.irDiv}}</td>
+            <td>{{ agreement.irInventor}}</td>
+            <td>{{ agreement.IRs}}</td>
+            <td>{{ agreement.stat }}</td>
+            <td>{{ agreement.leadSource}}</td>
+            <td>{{ agreement.metacat }}</td>
+            <td>{{ agreement.relAgtNum }}</td>
+            <td>{{ agreement.royalty}}</td>
+            <td>{{ agreement.startUp}}</td>
+            <td>{{ agreement.status}}</td>
+            <td>{{ agreement.termination}}</td>
+            <td>{{ agreement.title}}</td>
+            <td>{{ agreement.TLO}}</td>
+            <td>{{ agreement.totalValue}}</td>
+            <td>{{ agreement.type}}</td>
+            <td>{{ agreement.agtFY}}</td>
+            <td>{{ agreement.equity}}</td>
+            <td>{{ agreement.VAL}}</td>
+		</tr>
+  {% endfor %}
+</table>
+
+<script>
+function searchTable() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("dataTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td");
+    for (var j = 0; j < td.length; j++) {
+      txtValue = td[j].textContent || td[j].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+        break;
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>
