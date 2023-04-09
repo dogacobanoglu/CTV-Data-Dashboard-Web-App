@@ -122,6 +122,7 @@ class Migration(migrations.Migration):
                 ('alive', models.SmallIntegerField(max_length=10000000000)),
                 ('fileFY', models.CharField(max_length=10000000000)),
                 ('issueFY', models.CharField(max_length=10000000000)),
+                ('agtKey', models.CharField(max_length=10000000000)),
             ],
             options={
                 'db_table': 'patent',

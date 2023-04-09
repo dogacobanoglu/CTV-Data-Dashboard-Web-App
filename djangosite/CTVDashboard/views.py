@@ -88,3 +88,9 @@ def agstatistics(request):
         print(x)
         print((listPeople[person]).get(2008))
     return render(request, 'CTVDashboard/agstatistics.html', {'listPeople': listPeople})
+
+def agstatisticsOne(request):
+    # print("getting query")
+    agreementsOne = AGREEMENT.objects.filter(agtFY=2023,VAL=1)
+    print(agreementsOne)
+    return render(request, 'CTVDashboard/agstatisticsOne.html', {'agreementsOne': agreementsOne})

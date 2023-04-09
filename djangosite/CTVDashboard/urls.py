@@ -26,4 +26,5 @@ urlpatterns = [
     path('agreement/', views.agreement, name='agreement'),
     path('irstatistics/', views.irstatistics, name='irstatistics'),
     path('agstatistics/', views.agstatistics, name='agstatistics'),
+    path('agstatisticsOne/', views.agstatisticsOne, name='agstatisticsOne'),
 ]

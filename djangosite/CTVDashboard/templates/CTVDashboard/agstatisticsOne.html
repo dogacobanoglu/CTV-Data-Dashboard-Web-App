@@ -1,0 +1,45 @@
+<html>
+<head>
+    <style>
+    table, th, td {
+      border:1px solid black;
+    }
+    </style>
+    <style>
+          body {
+            background-color: #9BDDFF; /* replace with the color of your choice */
+          }
+    </style>
+    <style>
+          #searchInput {
+            background-color: white; /* replace with the color of your choice */
+            border: none; /* replace with the color of your choice */
+            border-radius: 10px; /* replace with the desired border radius */
+            padding: 5px; /* replace with the desired padding */
+            width: 200px; /* replace with the desired width */
+          }
+    </style>
+</head>
+<body>
+
+<h2>VALs (current FY list)</h2>
+
+<table id="dataTable" style="width:100%">
+  <tr>
+    <th>agtNum</th>
+    <th>title</th>
+    <th>type</th>
+    <th>TLO</th>
+  </tr>
+  {% for ir in agreementsOne %}
+		<tr>
+            <td>{{ ir.agtNum }}</td>
+            <td>{{ ir.title }}</td>
+            <td>{{ ir.type }}</td>
+            <td>{{ ir.TLO }}</td>
+		</tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
