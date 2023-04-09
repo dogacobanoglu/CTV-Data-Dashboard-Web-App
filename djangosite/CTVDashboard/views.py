@@ -2,7 +2,7 @@ from datetime import date
 
 from django.shortcuts import render
 from django.urls import path
-from .models import Names, IR, PATENT, AGREEMENT
+from .models import Names, IR, PATENT, AGREEMENT, INVENTOR
 
 
 # Create your views here.
@@ -94,3 +94,9 @@ def agstatisticsOne(request):
     agreementsOne = AGREEMENT.objects.filter(agtFY=2023,VAL=1)
     print(agreementsOne)
     return render(request, 'CTVDashboard/agstatisticsOne.html', {'agreementsOne': agreementsOne})
+
+def inventor(request):
+    # print("getting query")
+    inventors = INVENTOR.objects.all()
+    print(inventors)
+    return render(request, 'CTVDashboard/inventor.html', {'inventors': inventors})

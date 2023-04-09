@@ -27,4 +27,5 @@ urlpatterns = [
     path('irstatistics/', views.irstatistics, name='irstatistics'),
     path('agstatistics/', views.agstatistics, name='agstatistics'),
     path('agstatisticsOne/', views.agstatisticsOne, name='agstatisticsOne'),
+    path('inventor/', views.inventor, name='inventor'),
 ]

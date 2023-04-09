@@ -1,0 +1,86 @@
+<html>
+<head>
+    <style>
+    table, th, td {
+      border:1px solid black;
+    }
+    </style>
+    <style>
+          body {
+            background-color: #9BDDFF; /* replace with the color of your choice */
+          }
+    </style>
+    <style>
+          #searchInput {
+            background-color: white; /* replace with the color of your choice */
+            border: none; /* replace with the color of your choice */
+            border-radius: 10px; /* replace with the desired border radius */
+            padding: 5px; /* replace with the desired padding */
+            width: 200px; /* replace with the desired width */
+          }
+    </style>
+</head>
+<body>
+
+<h2>IR Inventor Table</h2>
+
+<input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
+<br><br>
+
+<table id="dataTable" style="width:100%">
+  <tr>
+    <th>company</th>
+    <th>dept</th>
+    <th>div</th>
+    <th>irKey</th>
+    <th>irNum</th>
+    <th>name</th>
+    <th>peopleKey</th>
+    <th>submitted</th>
+    <th>title</th>
+    <th>uni</th>
+    <th>workEmail</th>
+    <th>lead</th>
+  </tr>
+  {% for ir in inventors %}
+		<tr>
+            <td>{{ ir.company }}</td>
+            <td>{{ ir.dept }}</td>
+            <td>{{ ir.div }}</td>
+            <td>{{ ir.irKey }}</td>
+            <td>{{ ir.irNum }}</td>
+            <td>{{ ir.name }}</td>
+            <td>{{ ir.peopleKey }}</td>
+            <td>{{ ir.submitted }}</td>
+            <td>{{ ir.title }}</td>
+            <td>{{ ir.uni }}</td>
+            <td>{{ ir.workEmail }}</td>
+            <td>{{ ir.lead }}</td>
+		</tr>
+  {% endfor %}
+</table>
+
+<script>
+function searchTable() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("dataTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td");
+    for (var j = 0; j < td.length; j++) {
+      txtValue = td[j].textContent || td[j].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+        break;
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>

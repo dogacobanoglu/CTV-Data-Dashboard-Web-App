@@ -49,7 +49,7 @@ class PATENT(models.Model):
     patNum = models.CharField(max_length=1000)
     file = models.CharField(max_length=1000)
     priority = models.CharField(max_length=1000)
-    issue = models.CharField(max_length=1000)
+    issueFY = models.FloatField(max_length=1000)
     expiration = models.CharField(max_length=1000)
     abandon = models.CharField(max_length=1000)
     abandonVF = models.CharField(max_length=1000)
@@ -66,8 +66,8 @@ class PATENT(models.Model):
     deadDate = models.CharField(max_length=1000)
     staus = models.CharField(max_length=1000)
     alive = models.SmallIntegerField(max_length=1000)
-    fileFY = models.CharField(max_length=1000)
-    issueFY = models.CharField(max_length=1000)
+    fileFY = models.FloatField(max_length=1000)
+    issue = models.CharField(max_length=1000)
 
     class Meta:
         db_table = 'patent'
@@ -112,5 +112,23 @@ class AGREEMENT(models.Model):
     VAL = models.FloatField(max_length=1000)
 
     class Meta:
-        db_table = 'patent'
+        db_table = 'agreement'
+        managed = False
+
+class INVENTOR(models.Model):
+    company = models.CharField(max_length=1000, primary_key=True)
+    dept = models.CharField(max_length=1000)
+    div = models.CharField(max_length=1000)
+    irKey = models.CharField(max_length=1000)
+    irNum = models.CharField(max_length=1000)
+    name = models.CharField(max_length=1000)
+    peopleKey = models.CharField(max_length=1000)
+    submitted = models.CharField(max_length=1000)
+    title = models.CharField(max_length=1000)
+    uni = models.CharField(max_length=1000)
+    workEmail = models.CharField(max_length=1000)
+    lead = models.SmallIntegerField(max_length=1000)
+
+    class Meta:
+        db_table = 'ir_inv'
         managed = False
