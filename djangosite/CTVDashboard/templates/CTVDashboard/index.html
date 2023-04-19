@@ -136,7 +136,7 @@
 
         // Loop through all rows in the table and search for the searchTerm
         let rowsFound = "";
-        for (let i = 1; i < irsTable.rows.length; i++) {  // Start from i=1 to skip the header row
+        for (let i = 1; i < row.cells.length; i++) {  // Start from i=1 to skip the header row
             const row = irsTable.rows[i];
             for (let j = 0; j < row.cells.length; j++) {
                 const cell = row.cells[j];
@@ -160,7 +160,7 @@
         // You can implement the database search functionality here
         const patentsTable = document.getElementById("patents");
         let rowsFound = "";
-        for (let i = 1; i < patentsTable.rows.length; i++) {  // Start from i=1 to skip the header row
+        for (let i = 1; i < row.cells.length; i++) {  // Start from i=1 to skip the header row
             const row = patentsTable.rows[i];
             for (let j = 0; j < row.cells.length; j++) {
                 const cell = row.cells[j];
@@ -182,7 +182,7 @@
         // You can implement the database search functionality here
             const agreementsTable = document.getElementById("agreements");
         let rowsFound = "";
-        for (let i = 1; i < agreementsTable.rows.length; i++) {  // Start from i=1 to skip the header row
+        for (let i = 1; i < row.cells.length; i++) {  // Start from i=1 to skip the header row
             const row = agreementsTable.rows[i];
             for (let j = 0; j < row.cells.length; j++) {
                 const cell = row.cells[j];
@@ -192,7 +192,7 @@
                 }
             }
         }
-        if (rowsFound === "") {
+        if (rowsFound == "") {
             return "No rows found in Agreements database";
         } else {
             return rowsFound;

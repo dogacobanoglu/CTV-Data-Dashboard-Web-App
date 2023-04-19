@@ -104,6 +104,6 @@ def agstatisticsOne(request):
 
 def inventor(request):
     # print("getting query")
-    inventors = INVENTOR.objects.all()
+    inventors = INVENTOR.objects.filter(lead=1)
     print(inventors)
     return render(request, 'CTVDashboard/inventor.html', {'inventors': inventors})
