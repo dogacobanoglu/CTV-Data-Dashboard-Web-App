@@ -7,13 +7,20 @@ from .models import Names, IR, PATENT, AGREEMENT, INVENTOR
 
 # Create your views here.
 def index(request):
-    return render(request, "CTVDashboard/index.html",{})
+    irs = IR.objects.all()
+    print(irs)
+    patents = PATENT.objects.all()
+    print(patents)
+    agreements = AGREEMENT.objects.all()
+    print(agreements)
+    return render(request, 'CTVDashboard/index.html', {'irs': irs, 'patents': patents, 'agreements': agreements})
 
 def example(request):
     # print("getting query")
     names = Names.objects.all()
     print(names)
     return render(request, 'CTVDashboard/example.html', {'names': names})
+
 
 def ir(request):
     # print("getting query")

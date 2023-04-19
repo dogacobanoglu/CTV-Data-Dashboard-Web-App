@@ -44,8 +44,10 @@
 	{% for row in listPeople %}
 	<tr>
 		<td>{{ row }}</td>
-		{% if "2008" in row %}
-		<td>{{row.get("2008",0)}</td>
+		{% if 2008 in row %}
+		<td>{{row.2008}}</td>
+		{% else %}
+		<td>0</td>
 		{% endif %}
 		{% if 2009 in row %}
 		<td>{{row.2009}}</td>

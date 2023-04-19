@@ -4,73 +4,200 @@
     <meta charset="UTF-8">
     <title>CTV TLO DASHBOARD</title>
     <style>
-      .title {
-        text-align: center;
-        padding: 50px 0;
-      }
-    </style>
-    <style>
-      body {
-        background-color: #9BDDFF; /* replace with the color of your choice */
-      }
-    </style>
-    <style>
-      h1 {
-        color: blue;
-        font-family: Monaco, sans-serif;
-      }
-      .header {
-        color: blue;
-      }
-      button {
-        background-color: white; /* set the button background color */
-        font-size: 18px; /* set the font size of the button */
-        color: blue;
-        padding: 12px 22px; /* set the padding of the button */
-        border: none; /* remove the button border */
-        border-radius: 5px; /* add rounded corners to the button */
-        margin: 5px; /* add some space between buttons */
-        display: block;
-        margin: 0 auto;
-      }
-      button:hover {
-        background-color: #0000CD; /* set the button background color on hover */
-      }
+        .title {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        body {
+            background-color: #9BDDFF; /* replace with the color of your choice */
+        }
+
+        h1 {
+            color: blue;
+            font-family: Monaco, sans-serif;
+            font-size: 48px;
+        }
+
+        .header {
+            color: blue;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 60vh;
+            gap: 20px;
+        }
+
+        .rectangle {
+            width: 1000px;
+            height: 500px;
+            background-color: gray; /* set the background color of the rectangle */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rectangle-content {
+            color: white; /* set the text color of the content inside the rectangle */
+            text-align: center;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        button {
+            background-color: white; /* set the button background color */
+            font-size: 14px; /* set the font size of the button */
+            color: blue;
+            border: none; /* remove the button border */
+            border-radius: 5px; /* add rounded corners to the button */
+        }
+
+        button:hover {
+            background-color: #0000CD; /* set the button background color on hover */
+        }
     </style>
 </head>
 <body>
-    <div class="title">
-      <h1>COLUMBIA TECH VENTURES</h1>
-      <h1>TLO DASHBOARD</h1>
+<table id="irs">
+  <!-- table rows and cells -->
+</table>
+<table id="patents">
+  <!-- table rows and cells -->
+</table>
+
+<table id="agreements">
+  <!-- table rows and cells -->
+</table>
+<div class="title">
+    <h1>COLUMBIA TECHNOLOGY VENTURES</h1>
+</div>
+<div class="container">
+    <div class="rectangle">
+        <div class="rectangle-content">
+            <input type="text" id="search-input">
+            <button onclick="searchDatabases()">Search</button>
+            <div id="search-results"></div>
+        </div>
     </div>
-    <br>
-    <button>
-        <a href="ir/">Invention Report Table</a>
-    </button>
-    <br>
-    <button>
-        <a href="patent/">Patents Data Table</a>
-    </button>
-    <br>
-    <button>
-        <a href="agreement/">Agreements Data Table</a>
-    </button>
-    <br>
-    <button>
-        <a href="irstatistics/">Invention Report Internal Benchmarking</a>
-    </button>
-    <br>
-    <button>
-        <a href="agstatistics/">Agreements Internal Benchmarking 1</a>
-    </button>
-    <br>
-    <button>
-        <a href="agstatisticsOne/">Agreements Internal Benchmarking 2</a>
-    </button>
-    <br>
-    <button>
-        <a href="inventor/">Invention Report Inventor Table</a>
-    </button>
-    <br>
+    <div class="buttons-container">
+        <button>
+            <a href="ir/">Invention Report Table</a>
+        </button>
+        <button>
+            <a href="patent/">Patents Data Table</a>
+        </button>
+        <button>
+            <a href="agreement/">Agreements Data Table</a>
+        </button>
+        <button>
+            <a href="irstatistics/">Invention Report Internal Benchmarking</a>
+        </button>
+        <button>
+            <a href="agstatistics/">Agreements Internal Benchmarking 1</a>
+        </button>
+        <button>
+            <a href="agstatisticsOne/">Agreements Internal Benchmarking 2</a>
+        </button>
+        <button>
+            <a href="inventor/">Invention Report Inventor Table</a>
+        </button>
+    </div>
+</div>
+<script>
+    function searchDatabases() {
+        // Get the search input value
+        const searchTerm = document.getElementById("search-input").value;
+
+        // Call the search functions for each database and display the results
+        const irsResults = searchIRS(searchTerm);
+        const patentsResults = searchPatents(searchTerm);
+        const agreementsResults = searchAgreements(searchTerm);
+
+        const searchResults = document.getElementById("search-results");
+        searchResults.innerHTML = "<h2>Search Results:</h2>" +
+                                   "<h3>IRS:</h3>" + irsResults +
+                                   "<h3>Patents:</h3>" + patentsResults +
+                                   "<h3>Agreements:</h3>" + agreementsResults;
+    }
+
+    function searchIRS(searchTerm) {
+        // Search the IRS database using the searchTerm and return the rows found
+        // You can implement the database search functionality here
+        // Get the IRS table
+        const irsTable = document.getElementById("irs");
+
+        // Loop through all rows in the table and search for the searchTerm
+        let rowsFound = "";
+        for (let i = 1; i < irsTable.rows.length; i++) {  // Start from i=1 to skip the header row
+            const row = irsTable.rows[i];
+            for (let j = 0; j < row.cells.length; j++) {
+                const cell = row.cells[j];
+                if (cell.textContent.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    rowsFound += row.outerHTML;
+                    break;  // Once a match is found, move on to the next row
+                }
+            }
+        }
+
+        // Return the rows found
+        if (rowsFound === "") {
+            return "No rows found in IRS database";
+        } else {
+            return rowsFound;
+        }
+    }
+
+    function searchPatents(searchTerm) {
+        // Search the Patents database using the searchTerm and return the rows found
+        // You can implement the database search functionality here
+        const patentsTable = document.getElementById("patents");
+        let rowsFound = "";
+        for (let i = 1; i < patentsTable.rows.length; i++) {  // Start from i=1 to skip the header row
+            const row = patentsTable.rows[i];
+            for (let j = 0; j < row.cells.length; j++) {
+                const cell = row.cells[j];
+                if (cell.textContent.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    rowsFound += row.outerHTML;
+                    break;  // Once a match is found, move on to the next row
+                }
+            }
+        }
+        if (rowsFound === "") {
+            return "No rows found in Patents database";
+        } else {
+            return rowsFound;
+        }
+    }
+
+    function searchAgreements(searchTerm) {
+        // Search the Agreements database using the searchTerm and return the rows found
+        // You can implement the database search functionality here
+            const agreementsTable = document.getElementById("agreements");
+        let rowsFound = "";
+        for (let i = 1; i < agreementsTable.rows.length; i++) {  // Start from i=1 to skip the header row
+            const row = agreementsTable.rows[i];
+            for (let j = 0; j < row.cells.length; j++) {
+                const cell = row.cells[j];
+                if (cell.textContent.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    rowsFound += row.outerHTML;
+                    break;  // Once a match is found, move on to the next row
+                }
+            }
+        }
+        if (rowsFound === "") {
+            return "No rows found in Agreements database";
+        } else {
+            return rowsFound;
+        }
+    }
+</script>
 </body>
 </html>

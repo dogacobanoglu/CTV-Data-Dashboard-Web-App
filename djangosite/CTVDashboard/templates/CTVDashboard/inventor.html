@@ -11,7 +11,7 @@
           }
     </style>
     <style>
-          #searchInput {
+          #lastSeenButton {
             background-color: white; /* replace with the color of your choice */
             border: none; /* replace with the color of your choice */
             border-radius: 10px; /* replace with the desired border radius */
@@ -19,13 +19,45 @@
             width: 200px; /* replace with the desired width */
           }
     </style>
+    <script>
+        function filterTable() {
+            // Get the table rows
+            var rows = document.querySelectorAll("#dataTable tr");
+
+            // Initialize an object to store the most recent "submitted" value for each name
+            var lastSeen = {};
+
+            // Loop through each row and update the "lastSeen" object
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].querySelectorAll("td");
+                var name = cells[5].textContent;
+                var submitted = cells[7].textContent;
+                if (submitted > lastSeen[name] || !lastSeen[name]) {
+                    lastSeen[name] = submitted;
+                }
+            }
+
+            // Filter the rows that don't meet the criteria
+            var filteredRows = [];
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].querySelectorAll("td");
+                var name = cells[5].textContent;
+                var submitted = cells[7].textContent;
+                var year = parseInt(submitted.substring(0, 4));
+                if (year >= 2019 && year <= 2021 && submitted == lastSeen[name]) {
+                    rows[i].style.display = "table-row";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 </head>
 <body>
 
 <h2>IR Inventor Table</h2>
 
-<input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search...">
-<br><br>
+<button id="lastSeenButton" onclick="filterTable()">Last Seen</button>
 
 <table id="dataTable" style="width:100%">
   <tr>
@@ -59,28 +91,6 @@
 		</tr>
   {% endfor %}
 </table>
-
-<script>
-function searchTable() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("searchInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("dataTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td");
-    for (var j = 0; j < td.length; j++) {
-      txtValue = td[j].textContent || td[j].innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-        break;
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
 
 </body>
 </html>
